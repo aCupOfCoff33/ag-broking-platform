@@ -1,3 +1,5 @@
+import { Rule as RuleType } from 'sanity';
+
 export default {
     name: 'preferredMarketRule',
     title: 'Preferred Market Rule',
@@ -8,6 +10,23 @@ export default {
         title: 'Rule Title',
         type: 'string',
       },
+
+      {
+        name: 'accessType',
+        title: 'Access Type',
+        type: 'string',
+        options: {
+          list: [
+            { title: 'Retail (Direct Access)', value: 'retail' },
+            { title: 'Wholesale Only', value: 'wholesale' },
+            { title: 'Both', value: 'both' }
+          ],
+          layout: 'radio'
+        },
+        validation: (Rule: RuleType) => Rule.required()
+      },
+
+    
       {
         name: 'market',
         title: 'Preferred Market',
